@@ -179,8 +179,10 @@ class UtilsLibrary {
             switch (updateFrom) {
                 default:
                     String[] splitPlayStore = source.split(Config.PLAY_STORE_TAG_RELEASE);
-                    splitPlayStore = splitPlayStore[1].split("(<)");
-                    version = splitPlayStore[0].trim();
+                    if(splitPlayStore.length>0) {
+                        splitPlayStore = splitPlayStore[1].split("(<)");
+                        version = splitPlayStore[0].trim();
+                    }
                     break;
                 case GITHUB:
                     String[] splitGitHub = source.split(Config.GITHUB_TAG_RELEASE);
